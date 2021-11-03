@@ -9,14 +9,14 @@ import Link from '@mui/material/Link'
 
 import { useStyles } from '../utils/styles'
 
-export default function Layout({ children }) {
+export default function Layout({ title, children }) {
   const classes = useStyles()
 
   return (
     <div>
       <Head>
         <title>
-          Next Amazona
+          {title ? `${title} - Next Amazona` : "Next Amazona"} 
         </title>
       </Head>
 
