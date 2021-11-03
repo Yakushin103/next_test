@@ -1,8 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardMedia from '@mui/material/CardMedia'
+import CardActionArea from '@mui/material/CardActionArea'
+import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
 import Layout from '../components/Layout'
-import styles from '../styles/Home.module.css'
+import { data } from '../utils/data'
 
 export default function Home() {
   return (
@@ -12,11 +17,39 @@ export default function Home() {
           Products
         </h1>
 
-        <ul>
-          <li>Product 1</li>
-          <li>Product 2</li>
-          <li>Product 3</li>
-        </ul>
+        <Grid container spacing={3}>
+          {
+            data.products.map(product => (
+              <Grid item md={4} key={product.name}>
+                <Card>
+                  <CardActionArea>
+                    <CardMedia
+                      title={product.name}
+                      component="img"
+                      image={product.image}
+                    />
+
+                    <CardContent>
+                      <Typography>
+                        {product.name}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+
+                  <CardActions>
+                    <Typography>
+                      $ {product.price}
+                    </Typography>
+
+                    <Button size="small" color="primary">
+                      Add to cart
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))
+          }
+        </Grid>
       </div>
     </Layout>
 
