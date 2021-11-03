@@ -1,9 +1,11 @@
 import Head from 'next/head'
+import NextLink from 'next/link'
 
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import Link from '@mui/material/Link'
 
 import { useStyles } from '../utils/styles'
 
@@ -20,7 +22,25 @@ export default function Layout({ children }) {
 
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
-          <Typography>amazona</Typography>
+          <NextLink href="/" passHref>
+            <Link>
+              <Typography className={classes.brand}>amazona</Typography>
+            </Link>
+          </NextLink>
+
+          <div className={classes.grow}></div>
+
+          <NextLink href="/cart" passHref>
+            <Link>
+              Cart
+            </Link>
+          </NextLink>
+
+          <NextLink href="/login" passHref>
+            <Link>
+              Login
+            </Link>
+          </NextLink>
         </Toolbar>
       </AppBar>
 
