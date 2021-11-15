@@ -24,7 +24,10 @@ export default function ProductScreen() {
   }
 
   return (
-    <Layout title={product.name}>
+    <Layout
+      title={product.name}
+      description={product.description}
+    >
       <div className={classes.section}>
         <NextLink href="/" passHref>
           <Link>
@@ -48,6 +51,12 @@ export default function ProductScreen() {
 
         <Grid item md={3} xs={12}>
           <List>
+            <ListItem>
+              <Typography component="h1">
+                {product.name}
+              </Typography>
+            </ListItem>
+
             <ListItem>
               <Typography>
                 Category: {product.category}
@@ -113,7 +122,7 @@ export default function ProductScreen() {
                 <Button
                   fullWidth
                   variant="contained"
-                  // color="primery"
+                // color="primery"
                 >
                   <Typography>
                     Add to cart
