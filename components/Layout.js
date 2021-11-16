@@ -11,13 +11,14 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Link from '@mui/material/Link'
 import Switch from '@mui/material/Switch'
+import Badge from '@mui/material/Badge'
 
 import { useStyles } from '../utils/styles'
 import { Store } from '../utils/Store'
 
 export default function Layout({ title, description, children }) {
   const { state, dispatch } = useContext(Store)
-  const { darkMode } = state
+  const { darkMode, cart } = state
   const theme = createTheme({
     typography: {
       h1: {
@@ -80,7 +81,16 @@ export default function Layout({ title, description, children }) {
 
             <NextLink href="/cart" passHref>
               <Link>
-                Cart
+                {
+                  cart.cartItems.length > 0 ?
+                    <Badge
+                      color="secondary"
+                      badgeContent={cart.cartItems.length}
+                    >
+                      Cart
+                    </Badge> :
+                    'Cart'
+                }
               </Link>
             </NextLink>
 

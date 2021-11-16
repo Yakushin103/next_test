@@ -5,7 +5,8 @@ export const useStyles = makeStyles({
     backgroundColor: '#203040',
     '& a': {
       color: '#fff',
-      marginLeft: 10
+      marginLeft: 10,
+      textDecoration: 'none',
     }
   },
   brand: {
