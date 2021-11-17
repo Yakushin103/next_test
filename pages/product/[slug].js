@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import axios from 'axios'
 
@@ -17,6 +18,7 @@ import { useStyles } from '../../utils/styles'
 import { Store } from '../../utils/Store'
 
 export default function ProductScreen(props) {
+  const router = useRouter()
   const { dispatch } = useContext(Store)
   const { product } = props
   const classes = useStyles()
@@ -35,6 +37,7 @@ export default function ProductScreen(props) {
       type: 'CART_ADD_ITEM',
       payload: { ...product, quantity: 1 }
     })
+    router.push('/cart')
   }
 
   return (
