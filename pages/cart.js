@@ -3,6 +3,7 @@ import axios from 'axios'
 import NextLink from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
@@ -24,6 +25,7 @@ import Layout from '../components/Layout'
 import { Store } from '../utils/Store'
 
 function CartScreen() {
+  const router = useRouter()
   const { state, dispatch } = useContext(Store)
   const { cart: { cartItems } } = state
 
@@ -41,6 +43,10 @@ function CartScreen() {
 
   const removeItemHandler = (item) => {
     dispatch({ type: 'CART_REMOVE_ITEM', payload: item })
+  }
+
+  const checkoutHandler = () => {
+    router.push('/shipping')
   }
 
   return (
@@ -179,6 +185,7 @@ function CartScreen() {
                         variant="contained"
                         color="primary"
                         fullWidth
+                        onClick={checkoutHandler}
                       >
                         Check Out
                       </Button>

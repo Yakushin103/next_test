@@ -25,5 +25,9 @@ export const useStyles = makeStyles({
   },
   section: {
     margin: '10px 0'
+  },
+  form: {
+    maxWidth: 800,
+    margin: '0 auto'
   }
 })
