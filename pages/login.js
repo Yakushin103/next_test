@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 import Typography from '@mui/material/Typography'
 import List from '@mui/material/List'
@@ -10,11 +12,23 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import Layout from '../components/Layout'
 import { useStyles } from '../utils/styles'
+import { Store } from '../utils/Store'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const classes = useStyles()
+  const router = useRouter()
+  const { redirect } = router.query
+  const { state, dispatch } = useContext(Store)
+  const { userInfo } = state
+
+  useEffect(() => {
+    if (userInfo) {
+      router.push('/')
+    }
+  }, [router])
+
 
   const submitHandler = async (e) => {
     e.preventDefault()
@@ -23,7 +37,9 @@ export default function Login() {
       const { data } = await axios.post('/api/users/login', {
         email, password
       })
-      alert('sucess login')
+      dispatch({ type: 'USER_LOGIN', payload: data })
+      Cookies.set('userInfo', JSON.stringify(data))
+      router.push(redirect || '/')
     } catch (err) {
       alert(err.response.data ? err.response.data.message : err.message)
     }
