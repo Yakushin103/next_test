@@ -13,6 +13,7 @@
     "@mui/material": "^5.0.6",
     "@mui/styles": "^5.0.2",
     "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
     "js-cookie": "^3.0.1",
     "mongoose": "^6.0.13",
     "next": "11.0.1",
