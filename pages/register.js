@@ -17,10 +17,6 @@ import { useStyles } from '../utils/styles'
 import { Store } from '../utils/Store'
 
 export default function Register() {
-  // const [name, setName] = useState('')
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [confirmPassword, setConfirmPassword] = useState('')
   const classes = useStyles()
   const router = useRouter()
   const { redirect } = router.query
