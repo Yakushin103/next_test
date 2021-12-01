@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { SnackbarProvider } from 'notistack'
+import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 
 import { StoreProvider } from '../utils/Store'
 
@@ -21,7 +22,9 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <StoreProvider>
-        <Component {...pageProps} />
+        <PayPalScriptProvider deferLoading={true}>
+          <Component {...pageProps} />
+        </PayPalScriptProvider>
       </StoreProvider>
     </SnackbarProvider>
   )
