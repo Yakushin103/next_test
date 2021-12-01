@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles'
 export const useStyles = makeStyles({
   navbar: {
     backgroundColor: '#203040',
+    marginBottom: '1rem',
     '& a': {
       color: '#fff',
       marginLeft: 10,
@@ -34,5 +35,8 @@ export const useStyles = makeStyles({
     color: '#fff',
     textTransform: 'initial',
     padding: '4px 0 0 0'
-  }
+  },
+  transparentBackground: {
+  backgroundColor: 'transparent'
+}
 })
